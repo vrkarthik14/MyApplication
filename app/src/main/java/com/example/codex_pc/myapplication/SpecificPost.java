@@ -19,7 +19,6 @@ public class SpecificPost extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_specific_post);
-        
 
         TextView title = (TextView)findViewById(R.id.TitleField);
         TextView dateField = (TextView)findViewById(R.id.DateField);
