@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_green_dark"
+    tools:context="com.example.codex_pc.myapplication.addevent">
+
+    <Button
+        android:id="@+id/post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/detail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="68dp"
+        android:text="post" />
+
+    <EditText
+        android:id="@+id/type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="47dp"
+        android:ems="10"
+        android:hint="type"
+        android:inputType="textPersonName"
+        android:textColor="@android:color/white" />
+
+    <EditText
+        android:id="@+id/detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/date"
+        android:layout_below="@+id/date"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:textColor="@android:color/white" />
+
+    <EditText
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/type"
+        android:layout_below="@+id/type"
+        android:layout_marginTop="22dp"
+        android:elevation="1dp"
+        android:ems="10"
+        android:hint="date "
+        android:inputType="date"
+        android:selectAllOnFocus="false"
+        android:singleLine="false"
+        android:textColor="@android:color/white" />
+</RelativeLayout>

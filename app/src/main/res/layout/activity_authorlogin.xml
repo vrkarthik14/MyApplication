@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.codex_pc.myapplication.authorlogin">
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="104dp"
+        android:ems="10"
+        android:hint="email "
+        android:inputType="textEmailAddress"
+        android:textColor="@android:color/black" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/email"
+        android:layout_below="@+id/email"
+        android:layout_marginTop="37dp"
+        android:ems="10"
+        android:hint="password "
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/signinbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:text="sing in " />
+
+    <Button
+        android:id="@+id/signupbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/signinbtn"
+        android:layout_below="@+id/signinbtn"
+        android:layout_marginTop="36dp"
+        android:text="sign up " />
+</RelativeLayout>
