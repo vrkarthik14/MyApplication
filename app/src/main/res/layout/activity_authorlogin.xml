@@ -7,6 +7,8 @@
     tools:context="com.example.codex_pc.myapplication.authorlogin">
 
     <EditText
+        android:background="@drawable/bordershape"
+        android:padding="5dp"
         android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,6 +21,8 @@
         android:textColor="@android:color/black" />
 
     <EditText
+        android:background="@drawable/bordershape"
+        android:padding="5dp"
         android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,18 +34,26 @@
         android:inputType="textPassword" />
 
     <Button
+        android:background="@drawable/bordershape"
+        android:padding="5dp"
+        android:backgroundTint="#f24500"
         android:id="@+id/signinbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/password"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
-        android:text="sing in " />
+        android:textColor="#ffffff"
+        android:text="sign in " />
 
     <Button
+        android:background="@drawable/bordershape"
+        android:padding="5dp"
         android:id="@+id/signupbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#283dda"
+        android:textColor="#ffffff"
         android:layout_alignStart="@+id/signinbtn"
         android:layout_below="@+id/signinbtn"
         android:layout_marginTop="36dp"

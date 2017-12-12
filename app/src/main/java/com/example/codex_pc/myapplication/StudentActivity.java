@@ -136,6 +136,14 @@ public class StudentActivity extends AppCompatActivity
                 case 1:
                     StudentNotes mstudentNotes = new StudentNotes();
                     return mstudentNotes;
+                case 2:
+                    StudentPost1 mstudentPost = new StudentPost1();
+                    return mstudentPost;
+//                    StudentPage1 m1studentPage = new StudentPage1();
+//                    return m1studentPage;
+
+
+
                 default:
                     return null;
             }
@@ -143,8 +151,8 @@ public class StudentActivity extends AppCompatActivity
 
         @Override
         public int getCount() {
-            // Show 2 total pages.
-            return 2;
+            // Show 3 total pages.
+            return 3;
         }
 
         @Override
@@ -155,7 +163,7 @@ public class StudentActivity extends AppCompatActivity
                 case 1:
                     return "Resources";
                 case 2:
-                    return "SECTION 3";
+                    return "Post";
             }
             return null;
         }

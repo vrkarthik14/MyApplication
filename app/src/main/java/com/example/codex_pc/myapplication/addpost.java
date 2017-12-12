@@ -12,15 +12,17 @@ public class addpost implements Serializable{
     private String type;
     private Date dateobj;
     private String details;
+    private String subject;
 
     public addpost(){
 
     }
 
-    public  addpost(String type,Date date,String details){
+    public  addpost(String type,Date date,String details,String subject){
         this.type = type;
         this.dateobj = date;
         this.details = details;
+        this.subject = subject;
     }
 
     public String getType(){
@@ -45,5 +47,13 @@ public class addpost implements Serializable{
 
     public void setDetails(String details) {
         this.details = details;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 }

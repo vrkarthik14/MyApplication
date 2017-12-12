@@ -6,8 +6,10 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,6 +37,8 @@ public class addevent extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener authStateListener;
     private String type,detail,date;
     private Date d1;
+    private Spinner mspinner;
+    private String subject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +51,14 @@ public class addevent extends AppCompatActivity {
         intype = (EditText)findViewById(R.id.type);
         indate = (EditText)findViewById(R.id.date);
         indetails = (EditText)findViewById(R.id.detail);
+
+        mspinner = (Spinner)findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.subjects, android.R.layout.simple_spinner_item);
+// Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+// Apply the adapter to the spinner
+        mspinner.setAdapter(adapter);
 
         mfirebaseStorage = FirebaseStorage.getInstance();
         mdatabaseReference = FirebaseDatabase.getInstance().getReference().child("event");
@@ -84,6 +96,7 @@ public class addevent extends AppCompatActivity {
         type = intype.getText().toString();
         detail = indetails.getText().toString();
         date = indate.getText().toString();
+        subject = mspinner.getSelectedItem().toString();
 
         try {
             d1 = new SimpleDateFormat("dd-MM-yyyy").parse(date);
@@ -94,7 +107,7 @@ public class addevent extends AppCompatActivity {
 
 
         if(type!=null&&d1 != null && detail != null) {
-            addpost newpost = new addpost(type, d1, detail);
+            addpost newpost = new addpost(type, d1, detail,subject);
             mdatabaseReference.push().setValue(newpost);
 
             indate.setText("");

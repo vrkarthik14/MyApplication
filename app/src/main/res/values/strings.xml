@@ -21,4 +21,18 @@
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_student">StudentActivity</string>
+    <string name="title_activity_student_post">StudentPost</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="subjects">
+        <item>Java</item>
+        <item>Data_Stucture</item>
+        <item>DMS</item>
+        <item>Maths</item>
+        <item>ME</item>
+        <item>COA</item>
+        <item>DS LAB</item>
+        <item>JAVA Lab</item>
+    </string-array>
 </resources>

@@ -55,8 +55,9 @@ public class StudentPage1 extends Fragment{
                 viewHolder.setTitle(model.getType());
                 viewHolder.setdate(model.getDate().toString());
                 viewHolder.setDetails(model.getDetails());
+                viewHolder.setSubject(model.getSubject());
                 Log.i("entered ","onStart");
-                final addpost maddpost = new addpost(model.getType(),model.getDate(),model.getDetails());
+                final addpost maddpost = new addpost(model.getType(),model.getDate(),model.getDetails(),model.getSubject());
                 viewHolder.mview.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -93,6 +94,10 @@ public class StudentPage1 extends Fragment{
         public void setDetails(String details){
             TextView detailView = (TextView)mview.findViewById(R.id.detailView);
             detailView.setText(details);
+        }
+        public void setSubject(String subject){
+            TextView subjectView = (TextView)mview.findViewById(R.id.subject);
+            subjectView.setText(subject);
         }
 
 

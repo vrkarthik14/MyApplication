@@ -107,10 +107,10 @@ public class StudentNotes extends Fragment {
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
-                Log.i("error","database error");
-                Log.i("error",databaseError.toString());
-                addpost maddpost = new addpost("exam",null,"no more");
-                mFileAdapter.add(maddpost);
+//                Log.i("error","database error");
+//                Log.i("error",databaseError.toString());
+//                addpost maddpost = new addpost("exam",null,"no more",);
+//                mFileAdapter.add(maddpost);
 
 
 
