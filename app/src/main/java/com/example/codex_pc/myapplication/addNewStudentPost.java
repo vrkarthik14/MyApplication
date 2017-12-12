@@ -21,7 +21,7 @@ public class addNewStudentPost extends AppCompatActivity {
     public DatabaseReference fireref;
 
 
-    
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
