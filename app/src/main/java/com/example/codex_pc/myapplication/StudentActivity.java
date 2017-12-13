@@ -23,7 +23,6 @@ public class StudentActivity extends AppCompatActivity
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private SwipeRefreshLayout swipeContainer;
-
     private ViewPager mViewPager;
     private FirebaseDatabase firebaseDatabase;
 
