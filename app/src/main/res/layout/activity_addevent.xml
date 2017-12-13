@@ -9,22 +9,22 @@
     tools:context="com.example.codex_pc.myapplication.addevent">
 
     <EditText
-        android:background="@drawable/bordershape"
-        android:padding="5dp"
         android:id="@+id/type"
-        android:layout_margin="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="20dp"
         android:layout_marginTop="20dp"
+        android:background="@drawable/bordershape"
         android:hint="Type of exam."
         android:inputType="textPersonName"
-        android:textColor="@android:color/white" />
+        android:padding="5dp"
+        android:textColor="@android:color/black" />
 
     <EditText
         android:id="@+id/date"
         android:layout_width="match_parent"
-        android:layout_margin="20dp"
         android:layout_height="wrap_content"
+        android:layout_margin="20dp"
         android:layout_marginTop="22dp"
         android:background="@drawable/bordershape"
         android:elevation="1dp"
@@ -34,19 +34,19 @@
         android:padding="5dp"
         android:selectAllOnFocus="false"
         android:singleLine="false"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/black" />
 
     <EditText
         android:id="@+id/detail"
-        android:layout_margin="20dp"
-        android:background="@drawable/bordershape"
-        android:padding="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Description"
+        android:layout_margin="20dp"
+        android:background="@drawable/bordershape"
         android:ems="10"
+        android:hint="Description"
         android:inputType="textMultiLine"
-        android:textColor="@android:color/white" />
+        android:padding="5dp"
+        android:textColor="@android:color/black" />
 
     <Spinner
         android:id="@+id/spinner"

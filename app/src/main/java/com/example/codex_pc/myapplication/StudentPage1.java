@@ -24,20 +24,11 @@ public class StudentPage1 extends Fragment{
 
     private RecyclerView recyclerView;
     private DatabaseReference mdatabaseReference;
-    static boolean calledAlready = false;
-
-
-
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        if (!calledAlready)
-        {
-            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-            calledAlready = true;
-        }
         View rootview = inflater.inflate(R.layout.studentpage,container,false);
         mdatabaseReference  = FirebaseDatabase.getInstance().getReference();
         recyclerView = (RecyclerView)rootview.findViewById(R.id.listView);
