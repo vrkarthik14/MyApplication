@@ -1,18 +1,20 @@
 package com.example.codex_pc.myapplication;
 
-import android.os.Bundle;
-
 import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * Created by CODEX_PC on 13-12-2017.
  */
 
-public class MyPersistance extends MainActivity {
+public class MyPersistance {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+    private static FirebaseDatabase firebaseDatabase;
+    public static FirebaseDatabase getDatabase(){
+        if(firebaseDatabase == null){
+            firebaseDatabase = FirebaseDatabase.getInstance();
+            firebaseDatabase.setPersistenceEnabled(true);
+        }
+        return firebaseDatabase;
     }
+
 }

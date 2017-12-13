@@ -101,9 +101,9 @@ public class authorlogin extends AppCompatActivity {
                                          }
                                      }else{
                                          //Log.i("user:",auth.getCurrentUser().toString());
-                                         Intent intent = new Intent(authorlogin.this,addevent.class);
+                                         Intent intent = new Intent(authorlogin.this,LectureActivity.class);
                                          startActivity(intent);
-                                         finish();
+//                                         finish();
 
                                      }
                             }
