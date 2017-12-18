@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,13 +12,23 @@
         android:orientation="vertical">
 
         <TextView
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:textAllCaps="true"
+            android:textColor="#000000"
+            android:textStyle="bold"
             android:id="@+id/TitleField"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
+            android:textSize="30sp"
             tools:text="Post" />
 
         <TextView
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:gravity="center"
+
             android:id="@+id/DateField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,15 +36,27 @@
             tools:text="Date" />
 
         <TextView
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:textSize="15dp"
+            android:gravity="center"
             android:id="@+id/DescriptionField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="description " />
+            tools:text="description "
+            android:textColor="#000000"/>
 
         <Button
+            android:background="@drawable/bordershape"
+            android:backgroundTint="#FF303F9F"
+            android:textColor="#ffffff"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
             android:id="@+id/notify"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Notify Me" />
+            android:text="Notify Me"
+            />
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

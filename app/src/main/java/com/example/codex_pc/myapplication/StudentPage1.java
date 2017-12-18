@@ -2,6 +2,7 @@ package com.example.codex_pc.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,8 +14,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.text.SimpleDateFormat;
 
 /**
  * Created by CODEX_PC on 09-12-2017.
@@ -24,6 +32,9 @@ public class StudentPage1 extends Fragment{
 
     private RecyclerView recyclerView;
     private DatabaseReference mdatabaseReference;
+    private DatabaseReference mref;
+    private String Usersection;
+
 
     @Nullable
     @Override
@@ -35,13 +46,38 @@ public class StudentPage1 extends Fragment{
         Log.i("EnteredOncreate","yes");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        Log.i("Userid",user.getUid());
+
+        mref = FirebaseDatabase.getInstance().getReference().child("Users").child(user.getUid()).child("Section");
+        String sectiona = mref.getKey();
+        mref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                 Usersection = dataSnapshot.getValue(String.class);
+                Log.i("UseriA",Usersection);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        Log.i("UseriD",sectiona);
+
         return rootview;
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("event");
+
+        Runnable r = new Runnable() {
+            @Override
+            public void run(){
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(Usersection);
+
         Log.i("In Onstart","yes");
         FirebaseRecyclerAdapter<addpost,PostviewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<addpost, PostviewHolder>(
                 addpost.class,
@@ -52,7 +88,9 @@ public class StudentPage1 extends Fragment{
             @Override
             protected void populateViewHolder(PostviewHolder viewHolder, final addpost model, int position) {
                 viewHolder.setTitle(model.getType());
-                viewHolder.setdate(model.getDate().toString());
+                SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy");
+                String edate = sdf.format(model.getDate());
+                viewHolder.setdate(edate);
                 viewHolder.setDetails(model.getDetails());
                 viewHolder.setSubject(model.getSubject());
                 Log.i("entered ","onStart");
@@ -70,10 +108,18 @@ public class StudentPage1 extends Fragment{
 
             }
         };
+
+
         recyclerView.setAdapter(firebaseRecyclerAdapter);
 
+            }
+        };
+
+        Handler h = new Handler();
+        h.postDelayed(r, 1000); // <-- the "1000" is the delay time in miliseconds.
 
     }
+
 
     public static class PostviewHolder extends RecyclerView.ViewHolder{
 

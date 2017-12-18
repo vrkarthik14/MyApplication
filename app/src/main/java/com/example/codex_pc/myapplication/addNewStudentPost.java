@@ -50,7 +50,6 @@ public class addNewStudentPost extends AppCompatActivity {
 
         if(!TextUtils.isEmpty(usn)&&!TextUtils.isEmpty(pTitle)&&!TextUtils.isEmpty(userdetail)){
 
-            Intent intent =new Intent(addNewStudentPost.this,StudentActivity.class);
             final DatabaseReference newPost = fireref.push();
             fireref.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -73,8 +72,10 @@ public class addNewStudentPost extends AppCompatActivity {
 
 
             Log.i("this worked fine","no error here");
+            startActivity(new Intent(addNewStudentPost.this,StudentActivity.class));
+            finish();
 
-            startActivity(intent);
+
         }
         else{
             Toast.makeText(addNewStudentPost.this,"Enter all fields",Toast.LENGTH_LONG).show();

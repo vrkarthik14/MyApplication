@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">College Book</string>
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
@@ -20,7 +20,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
-    <string name="title_activity_student">StudentActivity</string>
+    <string name="title_activity_student">Student Feeds </string>
     <string name="title_activity_student_post">StudentPost</string>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -35,9 +35,18 @@
         <item>DS LAB</item>
         <item>JAVA Lab</item>
     </string-array>
-    <string name="title_activity_lecture">LectureActivity</string>
+    <string-array name="sections">
+        <item>Select Your Section</item>
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+    </string-array>
+    <string name="title_activity_lecture">Lecture Feed </string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
     <string name="tab_text_3">Tab 3</string>
+    <string name="SutdentUsage"><![CDATA[>Currently any ISE 3rd sem student can register and get updates for upcoming exams it may be either 20 marks components or internals or sem end exams. And he can also use study materials posted by either lectures or CR\'s in student feed part of the app. And also he can post his project ideas in Research feed and get team-mates by specifying pre-requisites for his idea.]]></string>
+    <string name="notice">Currently this app is made only for 3rd sem ISE students it will be expanded for all branches and all sems.</string>
+    <string name="LectureUsage"><![CDATA[>Here teacher/crs can announce when an assignments or quiz is sheduled .They can also add resources such as notes, pdf of reference books and past questions papers for students reference, these docs are made directly available to all registered students, so no more long waits at Xerox shop notes (on day before exam).]]></string>
 </resources>

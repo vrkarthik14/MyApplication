@@ -5,7 +5,7 @@ android {
     buildToolsVersion "27.0.0"
     defaultConfig {
         applicationId "com.example.codex_pc.myapplication"
-        minSdkVersion 23
+        minSdkVersion 20
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"

@@ -8,6 +8,13 @@
     android:background="#ffffff"
     tools:context="com.example.codex_pc.myapplication.addevent">
 
+    <Spinner
+        android:id="@+id/SectionSpinner"
+        android:layout_width="match_parent"
+        android:padding="15dp"
+        android:layout_margin="20dp"
+        android:layout_height="wrap_content" />
+
     <EditText
         android:id="@+id/type"
         android:layout_width="match_parent"
@@ -48,6 +55,7 @@
         android:padding="5dp"
         android:textColor="@android:color/black" />
 
+
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="match_parent"
@@ -65,7 +73,7 @@
         android:layout_gravity="center"
         android:textColor="#ffffff"
         android:backgroundTint="#1a33c2"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="10dp"
         android:text="post" />
 
 

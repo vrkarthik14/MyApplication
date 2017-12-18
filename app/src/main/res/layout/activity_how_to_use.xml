@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.codex_pc.myapplication.How_to_use">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bordershape"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="TEACHER/C.R."
+            android:textAlignment="center"
+            android:textStyle="bold" />
+        <!--"This app is divided into 2 sections, one section is solely dedicated
+        to teachers  where they can announce when an assignment or quiz is scheduled.
+        They can also add  resources such as notes, pdf of reference books and past
+        questions papers for students reference, these docs are made directly available
+        to all registered students, so no more long waits at Xerox shop for
+        notes (on day before exam).\nNow the sec"-->
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="@string/LectureUsage"
+            android:textColor="@android:color/holo_red_dark"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/bordershape"
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="STUDENT"
+            android:textAlignment="center"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="@string/SutdentUsage"
+            android:textColor="@android:color/holo_red_dark"
+            android:textStyle="italic" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:background="@drawable/bordershape"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="5dp"
+        android:text="@string/notice"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp" />
+</LinearLayout>

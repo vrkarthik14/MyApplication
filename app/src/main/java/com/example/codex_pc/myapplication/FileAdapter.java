@@ -63,8 +63,9 @@ public class FileAdapter extends ArrayAdapter{
             public void onClick(View v) {
                 Log.i("enteredOnclick","yes");
                 Log.i("adress",file.getUrl1().toString());
-            downloadManager = (DownloadManager)getContext().getSystemService(Context.DOWNLOAD_SERVICE);
+                downloadManager = (DownloadManager)getContext().getSystemService(Context.DOWNLOAD_SERVICE);
                 DownloadManager.Request request = new DownloadManager.Request(Uri.parse(file.getUrl1()));
+                Log.i("Downaa",Uri.parse(file.getUrl1()).toString());
                 request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
                 Long reference = downloadManager.enqueue(request);
 

@@ -1,5 +1,6 @@
 package com.example.codex_pc.myapplication;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,9 +8,12 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.firebase.client.Firebase;
@@ -17,12 +21,19 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class authorlogin extends AppCompatActivity {
 
     private EditText email,password;
-    private FirebaseAuth auth;
+    private FirebaseAuth mAuth;
     private Button signUpbtn,signInbtn,btnReset;
+    private DatabaseReference mDatabase;
+    private ProgressBar mprogressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +42,11 @@ public class authorlogin extends AppCompatActivity {
 
         Firebase.setAndroidContext(this);
 
-        auth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("RegisteredTeacher");
+        mprogressBar = (ProgressBar)findViewById(R.id.AutherProgessBar);
 
-        email = (EditText)findViewById(R.id.email);
+        email = (EditText)findViewById(R.id.Autheremail);
         password = (EditText)findViewById(R.id.password);
         signInbtn = (Button)findViewById(R.id.signinbtn);
         signUpbtn = (Button)findViewById(R.id.signupbtn);
@@ -42,7 +55,7 @@ public class authorlogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(authorlogin.this);
-                builder.setTitle("Get a odfficial acount");
+                builder.setTitle("Get a official acount");
                 builder.setMessage("Are you a lecture of RIT ISE section c.Please register your mail-id to get an account");
 
                 builder.setPositiveButton("Email", new DialogInterface.OnClickListener() {
@@ -76,41 +89,58 @@ public class authorlogin extends AppCompatActivity {
         signInbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String inputemail = email.getText().toString();
-                final String inputpassword = password.getText().toString();
+                String Email = email.getText().toString().trim();
+                String pass = password.getText().toString().trim();
 
-                if(TextUtils.isEmpty(inputemail)){
-                    Toast.makeText(authorlogin.this, "Enter valid email adrees", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+                mprogressBar.setVisibility(View.VISIBLE);
+                InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),InputMethodManager.HIDE_NOT_ALWAYS);
 
-                if(TextUtils.isEmpty(inputpassword)){
-                    Toast.makeText(authorlogin.this, "Enter password", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                auth.signInWithEmailAndPassword(inputemail,inputpassword)
-                        .addOnCompleteListener(authorlogin.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                     if(!task.isSuccessful()){
-                                         if(inputpassword.length() < 6) {
-                                             password.setError("password lenght less than 6");
-                                         }else {
-                                             Toast.makeText(authorlogin.this, "Email or password incorrect", Toast.LENGTH_SHORT).show();
-                                         }
-                                     }else{
-                                         //Log.i("user:",auth.getCurrentUser().toString());
-                                         Intent intent = new Intent(authorlogin.this,LectureActivity.class);
-                                         startActivity(intent);
-//                                         finish();
-
-                                     }
+                if (!TextUtils.isEmpty(Email) && !TextUtils.isEmpty(pass)) {
+                    mAuth.signInWithEmailAndPassword(Email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                checkUserExists();
+                                Log.i("success","yes");
+                                mprogressBar.setVisibility(View.GONE);
+                            }else{
+                                Toast.makeText(authorlogin.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                mprogressBar.setVisibility(View.GONE);
+                                Log.i("success","No");
                             }
-                        });
-
+                        }
+                    });
+                }else{
+                    Toast.makeText(authorlogin.this, "Please Enter All Fields ", Toast.LENGTH_SHORT).show();
+                    mprogressBar.setVisibility(View.GONE);
+                }
             }
         });
 
     }
+
+    public void checkUserExists() {
+        final String user_id = mAuth.getCurrentUser().getUid();
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.hasChild(user_id)) {
+                    Toast.makeText(authorlogin.this, "Successfully Logged  In", Toast.LENGTH_SHORT).show();
+                    Intent loginIntent = new Intent(authorlogin.this, LectureActivity.class);
+                    startActivity(loginIntent);
+                    finish();
+                }
+                else{
+                    Log.i("accessf",user_id);
+                    Toast.makeText(authorlogin.this, "Sorry ! You don't have access ", Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+    }
+
+
 }

@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.02"
-        android:background="?android:attr/colorPressedHighlight"
+        android:background="#ba3030"
         android:orientation="vertical"
         android:padding="10dp"
         android:theme="@style/Base.V11.ThemeOverlay.AppCompat.Dialog">
@@ -20,30 +20,43 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.02"
-            android:textSize="18sp"
-            tools:text="Post" />
+            android:textSize="25dp"
+            android:textColor="#ffffff"
+            tools:text="Post"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:textStyle="bold|italic"/>
 
         <TextView
             android:id="@+id/dateView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.02"
-            tools:text="date " />
+            tools:text="date "
+            android:textSize="15dp"
+            android:layout_margin="5dp"
+            android:textColor="#ffffff"/>
 
         <TextView
             android:id="@+id/detailView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.02"
-            tools:text="detail" />
+            tools:text="detail"
+            android:textSize="15dp"
+            android:layout_margin="5dp"
+            android:textColor="#ffffff"
+            />
 
         <TextView
             android:id="@+id/subject"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.02"
-            android:textSize="14sp"
-            tools:text="text" />
+            tools:text="text"
+            android:textSize="15dp"
+            android:layout_margin="5dp"
+            android:textColor="#ffffff"/>
 
     </LinearLayout>
 </android.support.v7.widget.CardView>

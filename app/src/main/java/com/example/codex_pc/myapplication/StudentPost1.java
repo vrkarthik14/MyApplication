@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -23,18 +24,17 @@ public class StudentPost1 extends android.support.v4.app.Fragment {
 
     DatabaseReference myRefernceMarker;
     private RecyclerView mPostsList;
-
+    private FirebaseAuth mfirebaseAuth;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
 
-        View rootview = inflater.inflate(R.layout.activity_student_post,container,false);
+        final View rootview = inflater.inflate(R.layout.activity_student_post,container,false);
 
         mPostsList = (RecyclerView) rootview.findViewById(R.id.my_recycler_view_posts);
         mPostsList.setHasFixedSize(true);
         mPostsList.setLayoutManager(new LinearLayoutManager(this.getContext()));
-
         FloatingActionButton fab = (FloatingActionButton) rootview.findViewById(R.id.fab);
         fab.setImageResource(R.drawable.addbig);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -43,10 +43,12 @@ public class StudentPost1 extends android.support.v4.app.Fragment {
 
                 Intent intent = new Intent(getActivity(),addNewStudentPost.class);
                 startActivity(intent);
+                getActivity().finish();;
+
             }
         });
 
-        //fire = FirebaseDatabase.getInstance();
+
         myRefernceMarker = FirebaseDatabase.getInstance().getReference().child("Posts");
 
         return rootview;
