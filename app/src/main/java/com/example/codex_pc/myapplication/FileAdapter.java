@@ -26,14 +26,6 @@ public class FileAdapter extends ArrayAdapter{
 
     private StorageReference mstorageReference;
     DownloadManager downloadManager;
-
-
-
-
-
-
-
-
     public FileAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<Fileurls> objects) {
         super(context, resource, objects);
     }
@@ -71,10 +63,6 @@ public class FileAdapter extends ArrayAdapter{
 
             }
         });
-
-
-
-
         return convertView;
     }
 

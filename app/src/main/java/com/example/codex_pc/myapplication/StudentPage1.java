@@ -79,7 +79,7 @@ public class StudentPage1 extends Fragment{
                 DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(Usersection);
 
         Log.i("In Onstart","yes");
-        FirebaseRecyclerAdapter<addpost,PostviewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<addpost, PostviewHolder>(
+        final FirebaseRecyclerAdapter<addpost,PostviewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<addpost, PostviewHolder>(
                 addpost.class,
                 R.layout.list_card,
                 PostviewHolder.class,
@@ -109,6 +109,12 @@ public class StudentPage1 extends Fragment{
             }
         };
 
+        recyclerView.post(new Runnable() {
+            @Override
+            public void run() {
+                firebaseRecyclerAdapter.notifyDataSetChanged();
+            }
+        });
 
         recyclerView.setAdapter(firebaseRecyclerAdapter);
 
@@ -147,5 +153,16 @@ public class StudentPage1 extends Fragment{
 
 
 
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 }
