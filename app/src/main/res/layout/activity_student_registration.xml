@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
 
     <TextView
         android:layout_width="match_parent"
@@ -19,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/Email"
-        android:hint="Enter email"
+        android:hint="Enter Email"
         android:inputType="textEmailAddress"
         android:background="@drawable/bordershape"
         android:padding="10dp"
@@ -29,7 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/Username"
-        android:hint="Enter username"
+        android:hint="Enter Username"
         android:background="@drawable/bordershape"
         android:padding="10dp"
         android:layout_margin="10dp"
@@ -42,8 +45,40 @@
         android:layout_height="wrap_content"
         android:id="@+id/Password"
         android:inputType="textPassword"
-        android:hint="Enter password"
+        android:hint="Enter Password"
         />
+    <EditText
+        android:background="@drawable/bordershape"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:hint="Enter Monthly Budget"
+        android:layout_height="wrap_content"
+        android:id="@+id/YearlyBudget"/>
+    <EditText
+        android:background="@drawable/bordershape"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:hint="Enter Rent Allowance"
+        android:layout_height="wrap_content"
+        android:id="@+id/MonthlyRent"/>
+    <EditText
+        android:background="@drawable/bordershape"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:hint="Enter Food Allowance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/FoodAllowance"/>
+    <EditText
+        android:background="@drawable/bordershape"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:hint="Enter Other Expenses"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Other"/>
 
     <Spinner
         android:id="@+id/sections"
@@ -56,7 +91,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/signupButton"
-        android:text="Sign up"
+        android:text="Sign Up"
         android:background="@drawable/bordershape"
         android:backgroundTint="#FF303F9F"
         android:textColor="#ffffff"
@@ -92,5 +127,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:visibility="invisible" />
+    </LinearLayout>
 
-</LinearLayout>
+</ScrollView>

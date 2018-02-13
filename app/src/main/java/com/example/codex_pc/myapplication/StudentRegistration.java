@@ -26,7 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class StudentRegistration extends AppCompatActivity {
 
-    private EditText name,email,password;
+    private EditText name,email,password,yearlyBudget,monthlyRent,foodAllowance,otherExpenses;
     private FirebaseAuth mAuth;
     private String section;
     private DatabaseReference mDatabase;
@@ -42,6 +42,11 @@ public class StudentRegistration extends AppCompatActivity {
         name = (EditText) findViewById(R.id.Username);
         email = (EditText) findViewById(R.id.Email);
         password = (EditText) findViewById(R.id.Password);
+        yearlyBudget=(EditText) findViewById(R.id.YearlyBudget);
+        monthlyRent=(EditText) findViewById(R.id.MonthlyRent);
+        foodAllowance=(EditText) findViewById(R.id.FoodAllowance);
+        otherExpenses=(EditText) findViewById(R.id.Other);
+
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
         mprogressBar= (ProgressBar)findViewById(R.id.RegisterProgressBar);
@@ -57,29 +62,51 @@ public class StudentRegistration extends AppCompatActivity {
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String name_content,password_content,email_content,section;
+                final String name_content,password_content,email_content,section,budget_content,rent_content,foodal_content,other_content;
                 name_content= name.getText().toString().trim();
                 password_content = password.getText().toString().trim();
                 email_content=  email.getText().toString().trim();
+                budget_content=yearlyBudget.getText().toString().trim();
+                rent_content=monthlyRent.getText().toString().trim();
+                foodal_content=foodAllowance.getText().toString().trim();
+                other_content=otherExpenses.getText().toString().trim();
+                final int total = Integer.parseInt(budget_content);
+                final int rent = Integer.parseInt(rent_content);
+                final int food = Integer.parseInt(foodal_content);
+                final int other = Integer.parseInt(other_content);
+                final int sum=rent+food+other;
+
+
+
 
                 section= mspinner.getSelectedItem().toString();
                 mprogressBar.setVisibility(View.VISIBLE);
 
 
 
-                if (!TextUtils.isEmpty(email_content) && !TextUtils.isEmpty(name_content) && !TextUtils.isEmpty(password_content)&& !section.equals("Select Your Section")){
+                if (!TextUtils.isEmpty(email_content) && !TextUtils.isEmpty(name_content) && !TextUtils.isEmpty(password_content)&& !TextUtils.isEmpty(budget_content) && !TextUtils.isEmpty(rent_content) && !TextUtils.isEmpty(foodal_content) && !TextUtils.isEmpty(other_content) && !section.equals("Select Your Section")){
                     mAuth.createUserWithEmailAndPassword(email_content,password_content).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()){
-                                String user_id = mAuth.getCurrentUser().getUid();
+                                    if(total>sum){
+                                        String user_id = mAuth.getCurrentUser().getUid();
                                 DatabaseReference current_user_db = mDatabase.child(user_id);
                                 current_user_db.child("Username_Name").setValue(name_content);
+                                current_user_db.child("Yearly Budget").setValue(budget_content);
+                                current_user_db.child("Monthly Rent").setValue(rent_content);
+                                current_user_db.child("Food Allowance").setValue(foodal_content);
+                                current_user_db.child("Other Expenses").setValue(other_content);
                                 current_user_db.child("Section").setValue(section);
                                 mprogressBar.setVisibility(View.GONE);
                                 startActivity(new Intent(StudentRegistration.this,StudentLogin.class));
                                 finish();
                                 Toast.makeText(StudentRegistration.this, "Successfully Registered ", Toast.LENGTH_SHORT).show();
+                                    }
+                                    else{
+                                        Toast.makeText(StudentRegistration.this, "Review monthly budget", Toast.LENGTH_LONG).show();
+                                    }
+
                             }
                             else {
                                 Toast.makeText(StudentRegistration.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -87,7 +114,9 @@ public class StudentRegistration extends AppCompatActivity {
                             }
                         }
                     });
-                }else if(section.equals("Select Your Section")){
+                }
+
+                    else if(section.equals("Select Your Section")){
                     Toast.makeText(getApplicationContext(), "Select your section ", Toast.LENGTH_SHORT).show();
                     mprogressBar.setVisibility(View.GONE);
                 }
