@@ -99,7 +99,7 @@ public class StudentRegistration extends AppCompatActivity {
                                 current_user_db.child("Other Expenses").setValue(other_content);
                                 current_user_db.child("Section").setValue(section);
                                 mprogressBar.setVisibility(View.GONE);
-                                startActivity(new Intent(StudentRegistration.this,StudentLogin.class));
+                                startActivity(new Intent(StudentRegistration.this,MainActivity.class));
                                 finish();
                                 Toast.makeText(StudentRegistration.this, "Successfully Registered ", Toast.LENGTH_SHORT).show();
                                     }

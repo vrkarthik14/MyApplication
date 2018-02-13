@@ -7,51 +7,33 @@
     tools:context="com.example.codex_pc.myapplication.MainActivity">
 
     <Button
-        android:id="@+id/teacherlogin"
+        android:id="@+id/wallet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/studentbtn"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="39dp"
-        android:background="@android:color/holo_blue_bright"
-        android:text="Teacher " />
-
-    <Button
-        android:id="@+id/studentbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
         android:layout_below="@+id/teacherlogin"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="27dp"
-        android:background="@android:color/holo_blue_bright"
-        android:text="student  " />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/studentbtn"
-        android:layout_below="@+id/studentbtn"
-        android:layout_marginTop="144dp"
-        android:text="academia" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button3"
-        android:layout_marginEnd="25dp"
-        android:layout_marginTop="45dp"
-        android:layout_toStartOf="@+id/button3"
+        android:layout_marginEnd="77dp"
+        android:layout_marginTop="63dp"
         android:text="wallet" />
 
     <Button
         android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/button4"
-        android:layout_marginTop="17dp"
-        android:layout_toEndOf="@+id/button3"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="137dp"
+        android:layout_marginStart="21dp"
+        android:layout_toEndOf="@+id/teacherlogin"
         android:text="college forum" />
+
+    <Button
+        android:id="@+id/studentbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button4"
+        android:layout_marginEnd="27dp"
+        android:layout_marginTop="52dp"
+        android:layout_toStartOf="@+id/button4"
+        android:text="academia" />
 
 </RelativeLayout>

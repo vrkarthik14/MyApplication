@@ -83,7 +83,7 @@ public class StudentLogin extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.hasChild(user_id)) {
-                    Intent loginIntent = new Intent(StudentLogin.this, StudentActivity.class);
+                    Intent loginIntent = new Intent(StudentLogin.this, MainActivity.class);
                     startActivity(loginIntent);
                     Log.i("entred","ya");
                     finish();

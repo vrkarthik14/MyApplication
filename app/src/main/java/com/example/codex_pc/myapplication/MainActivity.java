@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,27 +15,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         MyPersistance.getDatabase();
-        Button techerLogin = (Button)findViewById(R.id.teacherlogin);
         Button studentLogin = (Button)findViewById(R.id.studentbtn);
-        techerLogin.setOnClickListener(new View.OnClickListener() {
+
+        if(FirebaseAuth.getInstance().getCurrentUser()==null){
+            startActivity(new Intent(MainActivity.this,StudentLogin.class));
+        }
+
+        Button wallet = (Button) findViewById(R.id.wallet);
+        wallet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent login = new Intent(MainActivity.this,authorlogin.class);
-                MainActivity.this.startActivity(login);
+                startActivity(new Intent(MainActivity.this,Wallet.class));
             }
         });
+
+
         studentLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                if(user != null){
+
                     Intent studentevent = new Intent(MainActivity.this,StudentActivity.class);
                     startActivity(studentevent);
-                }
-                else{
-                    Intent studentevent = new Intent(MainActivity.this,StudentLogin.class);
-                    startActivity(studentevent);
-                }
+
             }
         });
     }
