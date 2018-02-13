@@ -47,8 +47,6 @@ public class StudentPost1 extends android.support.v4.app.Fragment {
 
             }
         });
-
-
         myRefernceMarker = FirebaseDatabase.getInstance().getReference().child("Posts");
 
         return rootview;

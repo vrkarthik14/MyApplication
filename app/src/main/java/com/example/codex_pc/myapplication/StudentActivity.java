@@ -65,7 +65,6 @@ public class StudentActivity extends AppCompatActivity
         //Log.i("iseg",username.getText().toString());
 
 
-
     }
 
     @Override

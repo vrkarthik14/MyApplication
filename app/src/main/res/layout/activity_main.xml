@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/appforcollege"
     tools:context="com.example.codex_pc.myapplication.MainActivity">
 
     <Button
@@ -26,5 +25,33 @@
         android:layout_marginTop="27dp"
         android:background="@android:color/holo_blue_bright"
         android:text="student  " />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/studentbtn"
+        android:layout_below="@+id/studentbtn"
+        android:layout_marginTop="144dp"
+        android:text="academia" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button3"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="45dp"
+        android:layout_toStartOf="@+id/button3"
+        android:text="wallet" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/button4"
+        android:layout_marginTop="17dp"
+        android:layout_toEndOf="@+id/button3"
+        android:text="college forum" />
 
 </RelativeLayout>
