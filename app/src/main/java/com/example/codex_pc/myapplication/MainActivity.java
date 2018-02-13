@@ -15,17 +15,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         MyPersistance.getDatabase();
-        Button studentLogin = (Button)findViewById(R.id.studentbtn);
 
-        if(FirebaseAuth.getInstance().getCurrentUser()==null){
-            startActivity(new Intent(MainActivity.this,StudentLogin.class));
-        }
+        Button studentLogin = (Button)findViewById(R.id.student);
 
-        Button wallet = (Button) findViewById(R.id.wallet);
-        wallet.setOnClickListener(new View.OnClickListener() {
+
+
+        Button teacher = (Button) findViewById(R.id.teacher);
+        teacher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,Wallet.class));
+                startActivity(new Intent(MainActivity.this,authorlogin.class));
             }
         });
 
@@ -34,9 +33,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                    Intent studentevent = new Intent(MainActivity.this,StudentActivity.class);
-                    startActivity(studentevent);
+                if(FirebaseAuth.getInstance().getCurrentUser()==null){
+                    startActivity(new Intent(MainActivity.this,StudentLogin.class));
 
+                }
+                else {
+                    Intent studentevent = new Intent(MainActivity.this, StudentActivity.class);
+                    startActivity(studentevent);
+                }
             }
         });
     }

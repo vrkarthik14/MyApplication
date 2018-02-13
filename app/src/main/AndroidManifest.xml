@@ -17,7 +17,7 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -44,7 +44,11 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".How_to_use" />
-        <activity android:name=".Wallet"></activity>
+        <activity android:name=".Wallet" />
+        <activity
+            android:name=".CollegeForum"
+            android:label="@string/title_activity_college_forum"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

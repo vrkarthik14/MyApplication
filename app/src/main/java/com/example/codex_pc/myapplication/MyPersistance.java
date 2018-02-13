@@ -16,5 +16,4 @@ public class MyPersistance {
         }
         return firebaseDatabase;
     }
-
 }

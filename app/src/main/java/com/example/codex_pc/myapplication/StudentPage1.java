@@ -56,7 +56,6 @@ public class StudentPage1 extends Fragment{
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                  Usersection = dataSnapshot.getValue(String.class);
-                Log.i("UseriA",Usersection);
             }
 
             @Override

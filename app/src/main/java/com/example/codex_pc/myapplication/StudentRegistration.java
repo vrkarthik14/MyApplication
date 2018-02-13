@@ -75,10 +75,6 @@ public class StudentRegistration extends AppCompatActivity {
                 final int food = Integer.parseInt(foodal_content);
                 final int other = Integer.parseInt(other_content);
                 final int sum=rent+food+other;
-
-
-
-
                 section= mspinner.getSelectedItem().toString();
                 mprogressBar.setVisibility(View.VISIBLE);
 
@@ -99,7 +95,7 @@ public class StudentRegistration extends AppCompatActivity {
                                 current_user_db.child("Other Expenses").setValue(other_content);
                                 current_user_db.child("Section").setValue(section);
                                 mprogressBar.setVisibility(View.GONE);
-                                startActivity(new Intent(StudentRegistration.this,MainActivity.class));
+                                startActivity(new Intent(StudentRegistration.this,StudentActivity.class));
                                 finish();
                                 Toast.makeText(StudentRegistration.this, "Successfully Registered ", Toast.LENGTH_SHORT).show();
                                     }
