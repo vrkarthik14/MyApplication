@@ -59,10 +59,11 @@ public class addevent1 extends Fragment {
     private StorageReference fileref;
     private EditText des;
     private Button upload;
-    private String descriptoin="";
+    private String descriptoin="",name;
     private TextView selectText;
     private ProgressBar progressBar;
     private TextView uploadNote;
+    EditText myname;
 
 
 
@@ -75,6 +76,7 @@ public class addevent1 extends Fragment {
         intype = (EditText) rootview.findViewById(R.id.type);
         indate = (EditText) rootview.findViewById(R.id.date);
         indetails = (EditText) rootview.findViewById(R.id.detail);
+        myname = (EditText) rootview.findViewById(R.id.my_name);
 
 
         imageButton = (ImageButton)rootview.findViewById(R.id.FilePickerBtn);
@@ -128,6 +130,7 @@ public class addevent1 extends Fragment {
         type = intype.getText().toString();
         detail = indetails.getText().toString();
         date = indate.getText().toString();
+        name = myname.getText().toString();
 //        subject = mspinner.getSelectedItem().toString();
   //      section = mspinnerSection.getSelectedItem().toString();
 
@@ -145,9 +148,11 @@ public class addevent1 extends Fragment {
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         Uri downloadUri = taskSnapshot.getDownloadUrl();
                         if (!type.equals("") && d1 != null && !detail.equals("")) {
-                            addpost newpost = new addpost(type, d1, detail, "",downloadUri.toString());
-                            mdatabaseReference.push().setValue(newpost);
-
+                            addpost newpost = new addpost(type, d1, detail, "",downloadUri.toString(),name);
+                            String id = mdatabaseReference.push().getKey();
+                            mdatabaseReference.child(id).setValue(newpost);
+                            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("RegisteredTeacher").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("issues");
+                            databaseReference.push().setValue(id);
                             indate.setText("");
                             intype.setText("");
                             indetails.setText("");
@@ -155,6 +160,7 @@ public class addevent1 extends Fragment {
                         } else {
                             Toast.makeText(getContext(), "You can not leave any field blank!!", Toast.LENGTH_SHORT).show();
                         }
+                        Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
                     }
 
                 });
