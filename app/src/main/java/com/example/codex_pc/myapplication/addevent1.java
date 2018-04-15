@@ -1,23 +1,32 @@
 package com.example.codex_pc.myapplication;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -42,6 +51,19 @@ public class addevent1 extends Fragment {
     private Spinner mspinnerSection;
     private String subject;
     private String section;
+    private ImageButton imageButton;
+    final static int PICK_PDF_CODE = 2342;
+    private StorageReference storageReference;
+    private UploadTask uploadTask;
+    private Uri uri;
+    private StorageReference fileref;
+    private EditText des;
+    private Button upload;
+    private String descriptoin="";
+    private TextView selectText;
+    private ProgressBar progressBar;
+    private TextView uploadNote;
+
 
 
     @Nullable
@@ -53,6 +75,22 @@ public class addevent1 extends Fragment {
         intype = (EditText) rootview.findViewById(R.id.type);
         indate = (EditText) rootview.findViewById(R.id.date);
         indetails = (EditText) rootview.findViewById(R.id.detail);
+
+
+        imageButton = (ImageButton)rootview.findViewById(R.id.FilePickerBtn);
+        storageReference = FirebaseStorage.getInstance().getReference();
+//        databaseReference = FirebaseDatabase.getInstance().getReference().child("downloadurl");
+        upload = (Button)rootview.findViewById(R.id.uploadBtn);
+
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_PDF_CODE);
+            }
+        });
 
 //        mspinner = (Spinner) rootview.findViewById(R.id.spinner);
 //        mspinnerSection = (Spinner) rootview.findViewById(R.id.SectionSpinner);
@@ -90,41 +128,67 @@ public class addevent1 extends Fragment {
         type = intype.getText().toString();
         detail = indetails.getText().toString();
         date = indate.getText().toString();
-        subject = mspinner.getSelectedItem().toString();
-        section = mspinnerSection.getSelectedItem().toString();
+//        subject = mspinner.getSelectedItem().toString();
+  //      section = mspinnerSection.getSelectedItem().toString();
 
-        if(!section.equals("Select Your Section")){
-            mdatabaseReference = FirebaseDatabase.getInstance().getReference().child(section);
+
+            mdatabaseReference = FirebaseDatabase.getInstance().getReference().child("A");
 
             try {
+
                 d1 = new SimpleDateFormat("dd-MM-yyyy").parse(date);
 
 
+                uploadTask = fileref.putFile(uri);
+                uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Uri downloadUri = taskSnapshot.getDownloadUrl();
+                        if (!type.equals("") && d1 != null && !detail.equals("")) {
+                            addpost newpost = new addpost(type, d1, detail, "",downloadUri.toString());
+                            mdatabaseReference.push().setValue(newpost);
 
-            if (!type.equals("")&& d1 != null && !detail.equals("")) {
-                addpost newpost = new addpost(type, d1, detail, subject);
-                mdatabaseReference.push().setValue(newpost);
+                            indate.setText("");
+                            intype.setText("");
+                            indetails.setText("");
+                            Toast.makeText(getContext(), "Your message is succesfully Posted.", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getContext(), "You can not leave any field blank!!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
 
-                indate.setText("");
-                intype.setText("");
-                indetails.setText("");
-                Toast.makeText(this.getContext(), "Your message is succesfully Posted.", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this.getContext(), "You can not leave any field blank!!", Toast.LENGTH_SHORT).show();
+                });
+                uploadTask.addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getContext(), e.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+            }catch (Exception e){
+                Log.i("eororr",e.toString());
+                Toast.makeText(getContext(), e.toString(), Toast.LENGTH_SHORT).show();
             }
-            } catch (ParseException e) {
-                e.printStackTrace();
-                Toast.makeText(this.getContext(), "Please enter valid Date  ", Toast.LENGTH_SHORT).show();
+
+
+
+
+
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == PICK_PDF_CODE) {
+            if (data != null) {
+                uri = data.getData();
+
+                //selectText.setText("Pdf is Selected ");
+                fileref = storageReference.child(uri.getLastPathSegment());
             }
-
-
-
-        }else{
-            Toast.makeText(this.getContext(), "Please select section to which you want post this message.", Toast.LENGTH_SHORT).show();
         }
-
-
-
 
     }
 

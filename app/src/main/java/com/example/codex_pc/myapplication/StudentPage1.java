@@ -93,7 +93,7 @@ public class StudentPage1 extends Fragment{
                 viewHolder.setDetails(model.getDetails());
                 viewHolder.setSubject(model.getSubject());
                 Log.i("entered ","onStart");
-                final addpost maddpost = new addpost(model.getType(),model.getDate(),model.getDetails(),model.getSubject());
+                final addpost maddpost = new addpost(model.getType(),model.getDate(),model.getDetails(),model.getSubject(),model.getDownloadUri());
                 viewHolder.mview.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
