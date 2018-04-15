@@ -90,7 +90,7 @@ public class StudentPage1 extends Fragment{
                 SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy");
                 String edate = sdf.format(model.getDate());
                 viewHolder.setdate(edate);
-                viewHolder.setDetails(model.getDetails());
+                viewHolder.setDetails(model.getType());
                 viewHolder.setSubject(model.getSubject());
                 Log.i("entered ","onStart");
                 final addpost maddpost = new addpost(model.getType(),model.getDate(),model.getDetails(),model.getSubject(),model.getDownloadUri());

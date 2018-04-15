@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -11,52 +12,66 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.02"
         android:background="#0e4604"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:padding="10dp"
         android:theme="@style/Base.V11.ThemeOverlay.AppCompat.Dialog">
 
-        <TextView
-            android:id="@+id/postView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:layout_width="435dp"
+            android:layout_height="match_parent"
             android:layout_weight="0.02"
-            android:textSize="25dp"
-            android:textColor="#ffffff"
-            tools:text="Post"
-            android:layout_margin="5dp"
-            android:gravity="center"
-            android:textStyle="bold|italic"/>
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/dateView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.02"
-            tools:text="date "
-            android:textSize="15dp"
-            android:layout_margin="5dp"
-            android:textColor="#ffffff"/>
+            <TextView
+                android:id="@+id/postView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="0.02"
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:textSize="25dp"
+                android:textStyle="bold|italic"
+                tools:text="Post" />
 
-        <TextView
-            android:id="@+id/detailView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.02"
-            tools:text="detail"
-            android:textSize="15dp"
-            android:layout_margin="5dp"
-            android:textColor="#ffffff"
-            />
+            <TextView
+                android:id="@+id/dateView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="0.02"
+                android:textColor="#ffffff"
+                android:textSize="15dp"
+                tools:text="date " />
 
-        <TextView
-            android:id="@+id/subject"
+            <TextView
+                android:id="@+id/detailView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="0.02"
+                android:textColor="#ffffff"
+                android:textSize="15dp"
+                tools:text="detail" />
+
+            <TextView
+                android:id="@+id/subject"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="0.02"
+                android:textColor="#ffffff"
+                android:textSize="15dp"
+                tools:text="text" />
+
+
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/imageView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.02"
-            tools:text="text"
-            android:textSize="15dp"
-            android:layout_margin="5dp"
-            android:textColor="#ffffff"/>
+            app:srcCompat="@drawable/teacherclass" />
 
     </LinearLayout>
 </android.support.v7.widget.CardView>
