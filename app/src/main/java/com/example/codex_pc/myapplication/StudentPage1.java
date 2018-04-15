@@ -75,7 +75,7 @@ public class StudentPage1 extends Fragment{
         Runnable r = new Runnable() {
             @Override
             public void run(){
-                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(Usersection);
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("A");
 
         Log.i("In Onstart","yes");
         final FirebaseRecyclerAdapter<addpost,PostviewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<addpost, PostviewHolder>(

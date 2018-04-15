@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -55,19 +54,19 @@ public class addevent1 extends Fragment {
         indate = (EditText) rootview.findViewById(R.id.date);
         indetails = (EditText) rootview.findViewById(R.id.detail);
 
-        mspinner = (Spinner) rootview.findViewById(R.id.spinner);
-        mspinnerSection = (Spinner) rootview.findViewById(R.id.SectionSpinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getContext(),
-                R.array.subjects, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
-        mspinner.setAdapter(adapter);
-
-        ArrayAdapter<CharSequence> Sectionadapter = ArrayAdapter.createFromResource(this.getContext(),R.array.sections,android.R.layout.simple_spinner_item);
-        Sectionadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        mspinnerSection.setAdapter(Sectionadapter);
+//        mspinner = (Spinner) rootview.findViewById(R.id.spinner);
+//        mspinnerSection = (Spinner) rootview.findViewById(R.id.SectionSpinner);
+//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getContext(),
+//                R.array.subjects, android.R.layout.simple_spinner_item);
+//// Specify the layout to use when the list of choices appears
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//// Apply the adapter to the spinner
+//        mspinner.setAdapter(adapter);
+//
+//        ArrayAdapter<CharSequence> Sectionadapter = ArrayAdapter.createFromResource(this.getContext(),R.array.sections,android.R.layout.simple_spinner_item);
+//        Sectionadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//
+//        mspinnerSection.setAdapter(Sectionadapter);
 
         mfirebaseStorage = FirebaseStorage.getInstance();
 
